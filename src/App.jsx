@@ -29,8 +29,10 @@ function App() {
           <input ref={input} onKeyDown={(e) => { e.key === "Enter" && (setCity(e.target.value), input.current.value = "") }} type="text" placeholder='Şəhər daxil edin' className='p-2 bg-transparent outline-none border-b-2 border-b-orange-300 text-white text-center my-2' />
           {data &&
             <>
-              <h2 className='text-white text-4xl my-3'>{data.name}, {data["sys"].country}</h2>
-              <p className='drop-shadow-lg text-white text-[86px] font-semibold'>{data["main"].temp.toFixed()}°C</p>
+              <h2 className='text-white text-4xl my-3'>{data.name}, {data.sys.country}</h2>
+              <p className='drop-shadow-lg text-white text-[86px] font-semibold'>{Math.round(data.main.temp)}°C</p>
+              <p className='text-white text-2xl'>{data.weather["0"].description}</p>
+              <span className='text-white text-2xl'>{Math.round(data.main.temp_min)}°C / {Math.round(data.main.temp_max)}°C</span>
             </>
           }
         </div>
